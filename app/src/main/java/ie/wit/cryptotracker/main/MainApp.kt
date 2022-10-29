@@ -12,12 +12,8 @@ class MainApp : Application() {
     val cryptos = CryptoMemStore()
     override fun onCreate() {
         super.onCreate()
-        //setContentView(R.layout.activity_main)
-        hello()
+        Timber.plant(Timber.DebugTree())
+        i("CryptoTracker started")
     }
 }
 
-fun hello(){
-
-    println("Hello Crypto World")
-}

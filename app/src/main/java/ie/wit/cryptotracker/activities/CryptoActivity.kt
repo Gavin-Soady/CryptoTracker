@@ -38,7 +38,7 @@ class CryptoActivity : AppCompatActivity() {
 
         binding.btnAdd.setOnClickListener() {
             crypto.name = binding.name.text.toString()
-            crypto.amount = binding.amount.text.toString()
+            //crypto.amount = binding.amount.text.toString()
             if (crypto.name.isNotEmpty()) {
                 app.cryptos.create(crypto.copy())
                 i("add Button Pressed: ${crypto}")
