@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Crypto Tracker</string>
+    <string name="button_addCrypto">Add Crypto</string>
+    <string name="hint_cryptoName">Crypto Name</string>
+    <string name="menu_addCrypto">Add</string>
+    <string name="menu_cancelCrypto">Cancel</string>
 </resources>
