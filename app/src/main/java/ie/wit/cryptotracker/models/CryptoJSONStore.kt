@@ -49,6 +49,11 @@ class CryptoJSONStore(private val context: Context) : CryptoStore {
         }
     }
 
+    override fun delete(crypto: CryptoModel) {
+        cryptos.remove(crypto)
+        serialize()
+    }
+
     private fun serialize() {
         val jsonString = gsonBuilder.toJson(cryptos, listType)
         write(context, JSON_FILE, jsonString)

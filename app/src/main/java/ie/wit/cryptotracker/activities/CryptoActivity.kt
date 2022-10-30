@@ -16,13 +16,14 @@ import ie.wit.cryptotracker.main.MainApp
 import ie.wit.cryptotracker.models.CryptoModel
 import timber.log.Timber
 import timber.log.Timber.i
-//import com.squareup.picasso.Picasso
+import com.squareup.picasso.Picasso
 
 class CryptoActivity : AppCompatActivity() {
 
     private lateinit var binding: CryptoTokenBinding
     var crypto = CryptoModel()
     lateinit var app: MainApp
+    var edit = false
 
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
@@ -34,19 +35,27 @@ class CryptoActivity : AppCompatActivity() {
 
         i("Crypto Activity started...")
 
-            var edit = false
+
         if (intent.hasExtra("crypto_edit")) {
             edit = true
             crypto = intent.extras?.getParcelable("crypto_edit")!!
             binding.btnAdd.setText(R.string.save_crypto)
             binding.name.setText(crypto.name)
             binding.amount.setText(crypto.amount)
+            binding.price.setText(crypto.price)
+            binding.total.setText(crypto.total)
 
         }
 
         binding.btnAdd.setOnClickListener() {
             crypto.name = binding.name.text.toString()
             crypto.amount = binding.amount.text.toString()
+            crypto.price = binding.price.text.toString()
+            val amount = crypto.amount.toFloat()
+            val price = crypto.price.toFloat()
+            val total = amount * price
+            crypto.total = total.toString()
+
             if (crypto.name.isEmpty()) {
                 Snackbar.make(it, R.string.enter_crypto, Snackbar.LENGTH_LONG)
                     .show()
@@ -63,6 +72,7 @@ class CryptoActivity : AppCompatActivity() {
             }
         }
 
+
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_crypto, menu)
         return super.onCreateOptionsMenu(menu)
@@ -70,6 +80,10 @@ class CryptoActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
+            R.id.item_delete -> {
+                app.cryptos.delete(crypto)
+                finish()
+            }
             R.id.item_cancel -> {
                 finish()
             }

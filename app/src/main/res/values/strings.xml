@@ -3,8 +3,11 @@
     <string name="button_addCrypto">Add Crypto</string>
     <string name="hint_cryptoName">Crypto Name</string>
     <string name="hint_cryptoAmount">Crypto Amount</string>
+    <string name="hint_cryptoPrice">Crypto Price</string>
+    <string name="hint_cryptoTotal">Total Crypto Value</string>
     <string name="menu_addCrypto">Add</string>
     <string name="menu_cancelCrypto">Cancel</string>
+    <string name="menu_deleteCrypto">Delete </string>
     <string name="enter_crypto"> Please enter a Crypto </string>
     <string name="save_crypto"> Save Crypto </string>
 </resources>

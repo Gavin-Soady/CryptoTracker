@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layout_marginBottom="8dp"
     android:elevation="24dp">
 
@@ -18,14 +18,32 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:textSize="30sp"
-            tools:text="A Name" />
+            android:hint="@string/hint_cryptoName"
+            tools:text="Crypto" />
 
         <TextView
             android:id="@+id/amount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/name"
-            tools:text="An Amount" />
+            android:hint="@string/hint_cryptoAmount"
+            tools:text="Amount" />
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/amount"
+            android:hint="@string/hint_cryptoPrice"
+            tools:text="Price per coin" />
+        <TextView
+            android:id="@+id/total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/price"
+            android:hint="@string/hint_cryptoTotal"
+            tools:text="Total Value" />
+
+
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

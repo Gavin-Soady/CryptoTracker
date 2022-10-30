@@ -33,7 +33,7 @@ class CryptoListActivity : AppCompatActivity(), CryptoListener {
 
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerView.layoutManager = layoutManager
-        loadPlacemarks()
+        loadCryptos()
 
         registerRefreshCallback()
     }
@@ -62,10 +62,10 @@ class CryptoListActivity : AppCompatActivity(), CryptoListener {
     private fun registerRefreshCallback() {
         refreshIntentLauncher =
             registerForActivityResult(ActivityResultContracts.StartActivityForResult())
-            { loadPlacemarks() }
+            { loadCryptos() }
     }
 
-    private fun loadPlacemarks() {
+    private fun loadCryptos() {
         showPlacemarks(app.cryptos.findAll())
     }
 

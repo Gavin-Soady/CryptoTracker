@@ -23,6 +23,10 @@ class CryptoMemStore : CryptoStore {
         logAll()
     }
 
+    override fun delete(crypto: CryptoModel) {
+        cryptos.remove(crypto)
+    }
+
     override fun update(crypto: CryptoModel) {
         var foundCrypto: CryptoModel? = cryptos.find { p -> p.id == crypto.id }
         if (foundCrypto != null) {
