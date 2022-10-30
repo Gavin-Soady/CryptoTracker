@@ -4,6 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import ie.wit.cryptotracker.R
@@ -18,6 +20,7 @@ class CryptoListActivity : AppCompatActivity(), CryptoListener {
 
     lateinit var app: MainApp
     private lateinit var binding: CryptoListBinding
+    private lateinit var refreshIntentLauncher : ActivityResultLauncher<Intent>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +33,9 @@ class CryptoListActivity : AppCompatActivity(), CryptoListener {
 
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerView.layoutManager = layoutManager
-        binding.recyclerView.adapter = CryptoAdapter(app.cryptos.findAll(),this)
+        loadPlacemarks()
+
+        registerRefreshCallback()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -42,16 +47,31 @@ class CryptoListActivity : AppCompatActivity(), CryptoListener {
         when (item.itemId) {
             R.id.item_add -> {
                 val launcherIntent = Intent(this, CryptoActivity::class.java)
-               startActivityForResult(launcherIntent,0)
+                refreshIntentLauncher.launch(launcherIntent)
             }
         }
         return super.onOptionsItemSelected(item)
     }
+
     override fun onCryptoClick(crypto: CryptoModel) {
         val launcherIntent = Intent(this, CryptoActivity::class.java)
         launcherIntent.putExtra("crypto_edit", crypto)
-        startActivityForResult(launcherIntent,0)
+        refreshIntentLauncher.launch(launcherIntent)
     }
 
+    private fun registerRefreshCallback() {
+        refreshIntentLauncher =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult())
+            { loadPlacemarks() }
+    }
+
+    private fun loadPlacemarks() {
+        showPlacemarks(app.cryptos.findAll())
+    }
+
+    fun showPlacemarks (placemarks: List<CryptoModel>) {
+        binding.recyclerView.adapter = CryptoAdapter(placemarks, this)
+        binding.recyclerView.adapter?.notifyDataSetChanged()
+    }
 
 }

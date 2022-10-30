@@ -5,4 +5,6 @@
     <string name="hint_cryptoAmount">Crypto Amount</string>
     <string name="menu_addCrypto">Add</string>
     <string name="menu_cancelCrypto">Cancel</string>
+    <string name="enter_crypto"> Please enter a Crypto </string>
+    <string name="save_crypto"> Save Crypto </string>
 </resources>

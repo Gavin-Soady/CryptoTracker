@@ -7,5 +7,4 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class CryptoModel(var id: Long = 0,
                        var name: String = "",
-                       var amount: String = "",
-                       var price: String = "", ) : Parcelable
+                       var amount: String = "") : Parcelable
