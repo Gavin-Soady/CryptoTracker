@@ -46,6 +46,8 @@ class CryptoJSONStore(private val context: Context) : CryptoStore {
         if (foundCrypto != null) {
             foundCrypto.name = crypto.name
             foundCrypto.amount = crypto.amount
+            foundCrypto.price = crypto.price
+            foundCrypto.total = crypto.total
         }
     }
 

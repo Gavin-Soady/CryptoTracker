@@ -35,7 +35,6 @@ class CryptoActivity : AppCompatActivity() {
 
         i("Crypto Activity started...")
 
-
         if (intent.hasExtra("crypto_edit")) {
             edit = true
             crypto = intent.extras?.getParcelable("crypto_edit")!!
@@ -43,7 +42,7 @@ class CryptoActivity : AppCompatActivity() {
             binding.name.setText(crypto.name)
             binding.amount.setText(crypto.amount)
             binding.price.setText(crypto.price)
-            binding.total.setText(crypto.total)
+            //binding.total.setText(crypto.total)
 
         }
 
@@ -51,10 +50,12 @@ class CryptoActivity : AppCompatActivity() {
             crypto.name = binding.name.text.toString()
             crypto.amount = binding.amount.text.toString()
             crypto.price = binding.price.text.toString()
-            val amount = crypto.amount.toFloat()
-            val price = crypto.price.toFloat()
+            val amount = (crypto.amount).toFloat()
+            val price = (crypto.price).toFloat()
             val total = amount * price
             crypto.total = total.toString()
+            //crypto.amount = crypto.amount.toString()
+           // crypto.price = crypto.price.toString()
 
             if (crypto.name.isEmpty()) {
                 Snackbar.make(it, R.string.enter_crypto, Snackbar.LENGTH_LONG)
@@ -75,6 +76,7 @@ class CryptoActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_crypto, menu)
+        if (edit) menu.getItem(0).isVisible = true
         return super.onCreateOptionsMenu(menu)
     }
 

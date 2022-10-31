@@ -32,8 +32,9 @@ class CryptoMemStore : CryptoStore {
         if (foundCrypto != null) {
             foundCrypto.name = crypto.name
             foundCrypto.amount = crypto.amount
+            foundCrypto.price = crypto.price
+            foundCrypto.total = crypto.total
             //foundCrypto.price = crypto.price
-
             logAll()
         }
     }
