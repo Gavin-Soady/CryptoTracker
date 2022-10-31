@@ -66,11 +66,11 @@ class CryptoListActivity : AppCompatActivity(), CryptoListener {
     }
 
     private fun loadCryptos() {
-        showPlacemarks(app.cryptos.findAll())
+        showCryptos(app.cryptos.findAll())
     }
 
-    fun showPlacemarks (placemarks: List<CryptoModel>) {
-        binding.recyclerView.adapter = CryptoAdapter(placemarks, this)
+    fun showCryptos (cryptos: List<CryptoModel>) {
+        binding.recyclerView.adapter = CryptoAdapter(cryptos, this)
         binding.recyclerView.adapter?.notifyDataSetChanged()
     }
 
