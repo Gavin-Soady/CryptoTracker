@@ -2,6 +2,8 @@
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="8dp"
@@ -9,13 +11,26 @@
     android:layout_marginTop="5dp"
     android:layout_marginVertical="5dp"
     android:layout_marginStart="10dp"
-    android:layout_marginEnd="10dp">
+    android:layout_marginEnd="10dp"
+    card_view:cardCornerRadius="15dp">
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp"
-        >
+        android:padding="0dp"
+        android:background="#133364">
+
+        <ImageView
+            android:id="@+id/imageIcon"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+
+            android:contentDescription="@string/change_crypto_image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/name"
@@ -24,31 +39,60 @@
             android:layout_alignParentTop="true"
             android:textSize="30sp"
             android:hint="@string/hint_cryptoName"
-            tools:text="Crypto" />
+            android:textColor="#BFC8D6"
+            tools:text="Crypto"
+            android:paddingStart="8dp"
+            android:textAlignment="viewStart"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.048"
+            app:layout_constraintStart_toEndOf="@+id/imageIcon"
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
             android:id="@+id/amount"
+            android:paddingStart="8dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/name"
             android:hint="@string/hint_cryptoAmount"
-            tools:text="Amount" />
+            android:textColor="#BFC8D6"
+            tools:text="Amount"
+            android:textAlignment="viewStart"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.052"
+            app:layout_constraintStart_toEndOf="@+id/imageIcon"
+            app:layout_constraintTop_toBottomOf="@id/name"/>
         <TextView
             android:id="@+id/price"
+            android:paddingStart="8dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/amount"
             android:hint="@string/hint_cryptoPrice"
-            tools:text="Price per coin" />
+            android:textColor="#BFC8D6"
+            tools:text="Price per coin"
+            android:textAlignment="viewStart"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.052"
+            app:layout_constraintStart_toEndOf="@+id/imageIcon"
+            app:layout_constraintTop_toBottomOf="@id/amount"
+        />
         <TextView
             android:id="@+id/total"
+            android:paddingStart="8dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/price"
             android:hint="@string/hint_cryptoTotal"
-            tools:text="Total Value" />
+            android:textColor="#BFC8D6"
+            tools:text="Total Value"
+            android:textAlignment="viewStart"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.052"
+            app:layout_constraintStart_toEndOf="@+id/imageIcon"
+            app:layout_constraintTop_toBottomOf="@id/price"/>
 
 
 
-    </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

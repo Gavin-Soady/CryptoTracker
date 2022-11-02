@@ -1,6 +1,9 @@
 package ie.wit.cryptotracker.models
 
+import android.net.Uri
+import com.google.gson.*
 import timber.log.Timber.i
+import java.lang.reflect.Type
 
 var lastId = 0L
 
@@ -34,9 +37,11 @@ class CryptoMemStore : CryptoStore {
             foundCrypto.amount = crypto.amount
             foundCrypto.price = crypto.price
             foundCrypto.total = crypto.total
+            foundCrypto.image = crypto.image
             //foundCrypto.price = crypto.price
             logAll()
         }
+
     }
 
     private fun logAll() {

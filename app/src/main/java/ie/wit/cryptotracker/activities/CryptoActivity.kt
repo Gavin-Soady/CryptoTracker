@@ -17,12 +17,14 @@ import ie.wit.cryptotracker.models.CryptoModel
 import timber.log.Timber
 import timber.log.Timber.i
 import com.squareup.picasso.Picasso
+import ie.wit.cryptotracker.showImagePicker
 
 class CryptoActivity : AppCompatActivity() {
 
     private lateinit var binding: CryptoTokenBinding
     var crypto = CryptoModel()
     lateinit var app: MainApp
+    private lateinit var imageIntentLauncher : ActivityResultLauncher<Intent>
     var edit = false
 
         override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,6 +45,12 @@ class CryptoActivity : AppCompatActivity() {
             binding.amount.setText(crypto.amount)
             binding.price.setText(crypto.price)
             //binding.total.setText(crypto.total)
+            Picasso.get()
+                .load(crypto.image)
+                .into(binding.cryptoImage)
+            if (crypto.image != Uri.EMPTY) {
+                binding.chooseImage.setText(R.string.change_crypto_image)
+            }
 
         }
 
@@ -71,7 +79,14 @@ class CryptoActivity : AppCompatActivity() {
             setResult(RESULT_OK)
             finish()
             }
+
+            binding.chooseImage.setOnClickListener {
+                showImagePicker(imageIntentLauncher)
+            }
+            registerImagePickerCallback()
         }
+
+
 
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -91,5 +106,26 @@ class CryptoActivity : AppCompatActivity() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+
+     fun registerImagePickerCallback() {
+        imageIntentLauncher =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult())
+            { result ->
+                when(result.resultCode){
+                    RESULT_OK -> {
+                        if (result.data != null) {
+                            i("Got Result ${result.data!!.data}")
+                            crypto.image = result.data!!.data!!
+                            Picasso.get()
+                                .load(crypto.image)
+                                .into(binding.cryptoImage)
+                            binding.chooseImage.setText(R.string.change_crypto_image)
+                        } // end of if
+                    }
+                    RESULT_CANCELED -> { } else -> { }
+                }
+            }
     }
 }

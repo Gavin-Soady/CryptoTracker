@@ -17,16 +17,17 @@ tools:context="ie.wit.cryptotracker.activities.CryptoActivity">
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#006097"
+        android:background="#081C3B"
         android:fitsSystemWindows="true"
         app:elevation="0dip"
+        android:textColor="#BFC8D6"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbarAdd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:titleTextColor="@color/colorPrimary" />
+            app:titleTextColor="#BFC8D6" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <ScrollView
@@ -80,31 +81,38 @@ tools:context="ie.wit.cryptotracker.activities.CryptoActivity">
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="14sp" />
 
-            <TextView
-                android:id="@+id/total"
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/chooseImage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:hint="@string/hint_cryptoTotal"
-                android:inputType="text"
-                android:maxLength="25"
-                android:maxLines="1"
-                android:padding="8dp"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="14sp" />
+                android:layout_margin="16dp"
+                android:background="#081C3B"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
+                android:text="Add Image"
+                android:textColor="#BFC8D6"
+                android:textSize="16sp"/>
+            <ImageView
+                android:id="@+id/cryptoImage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/ic_launcher"/>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnAdd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                android:background="#006097"
+                android:background="#081C3B"
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"
                 android:stateListAnimator="@null"
                 android:text="@string/button_addCrypto"
-                android:textColor="@color/white"
+                android:textColor="#BFC8D6"
                 android:textSize="16sp" />
+
+
+
         </LinearLayout>
     </ScrollView>
 

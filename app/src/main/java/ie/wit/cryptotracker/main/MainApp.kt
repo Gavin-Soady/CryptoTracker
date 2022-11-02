@@ -8,6 +8,7 @@ import ie.wit.cryptotracker.models.CryptoMemStore
 import ie.wit.cryptotracker.models.CryptoStore
 import timber.log.Timber
 import timber.log.Timber.i
+import ie.wit.cryptotracker.activities.CryptoActivity
 
 class MainApp : Application() {
 
@@ -18,6 +19,9 @@ class MainApp : Application() {
         Timber.plant(Timber.DebugTree())
         cryptos = CryptoJSONStore(applicationContext)
         i("CryptoTracker started")
+
     }
+
+
 }
 

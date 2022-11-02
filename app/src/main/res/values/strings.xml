@@ -10,4 +10,8 @@
     <string name="menu_deleteCrypto">Delete </string>
     <string name="enter_crypto"> Please enter a Crypto </string>
     <string name="save_crypto"> Save Crypto </string>
+    <string name="cryptoImage"> Save Crypto </string>
+    <string name="select_crypto_image">Select crypto image</string>
+    <string name="change_crypto_image">Change crypto image</string>
+
 </resources>

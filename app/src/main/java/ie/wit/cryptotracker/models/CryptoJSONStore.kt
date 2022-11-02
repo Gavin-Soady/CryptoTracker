@@ -8,6 +8,7 @@ import ie.wit.cryptotracker.helpers.*
 import timber.log.Timber
 import java.lang.reflect.Type
 import java.util.*
+import kotlin.collections.ArrayList
 
 const val JSON_FILE = "cryptos.json"
 val gsonBuilder: Gson = GsonBuilder().setPrettyPrinting()
@@ -42,13 +43,16 @@ class CryptoJSONStore(private val context: Context) : CryptoStore {
 
 
     override fun update(crypto: CryptoModel) {
-        var foundCrypto: CryptoModel? = cryptos.find { p -> p.id == crypto.id }
+        val cryptosList = findAll() as ArrayList<CryptoModel>
+        var foundCrypto: CryptoModel? = cryptosList.find { p -> p.id == crypto.id }
         if (foundCrypto != null) {
             foundCrypto.name = crypto.name
             foundCrypto.amount = crypto.amount
             foundCrypto.price = crypto.price
             foundCrypto.total = crypto.total
+            foundCrypto.image = crypto.image
         }
+        serialize()
     }
 
     override fun delete(crypto: CryptoModel) {
@@ -88,4 +92,3 @@ class UriParser : JsonDeserializer<Uri>,JsonSerializer<Uri> {
         return JsonPrimitive(src.toString())
     }
 }
-

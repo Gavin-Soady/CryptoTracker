@@ -14,6 +14,9 @@ import ie.wit.cryptotracker.adapters.CryptoListener
 import ie.wit.cryptotracker.databinding.CryptoListBinding
 import ie.wit.cryptotracker.main.MainApp
 import ie.wit.cryptotracker.models.CryptoModel
+import ie.wit.cryptotracker.activities.CryptoActivity
+import timber.log.Timber
+import java.text.NumberFormat
 
 
 class CryptoListActivity : AppCompatActivity(), CryptoListener {
@@ -22,20 +25,31 @@ class CryptoListActivity : AppCompatActivity(), CryptoListener {
     private lateinit var binding: CryptoListBinding
     private lateinit var refreshIntentLauncher : ActivityResultLauncher<Intent>
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         binding = CryptoListBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.toolbar.title = title
         setSupportActionBar(binding.toolbar)
-
         app = application as MainApp
+
+        var totalsNF = NumberFormat.getInstance().format(getTotalBalance())
+
+        var totalBalance = "€$totalsNF"
+
+        binding.totalAmount.setText(totalBalance)
 
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerView.layoutManager = layoutManager
+
         loadCryptos()
 
         registerRefreshCallback()
+
+
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -72,6 +86,17 @@ class CryptoListActivity : AppCompatActivity(), CryptoListener {
     fun showCryptos (cryptos: List<CryptoModel>) {
         binding.recyclerView.adapter = CryptoAdapter(cryptos, this)
         binding.recyclerView.adapter?.notifyDataSetChanged()
+    }
+
+    private fun getTotalBalance(): Float {
+        var allCryptos = app.cryptos.findAll()
+        var totals = 0.0f
+        //allCryptos.forEach {crypto -totalBalance+total}
+        for (crypto in allCryptos){
+            totals += (crypto.total).toFloat()
+        }
+
+        return totals
     }
 
 }
