@@ -1,14 +1,13 @@
 package ie.wit.cryptotracker.main
 
 import android.app.Application
+import android.content.Intent
 import android.os.Bundle
-import ie.wit.cryptotracker.R
+import androidx.appcompat.app.AppCompatActivity
 import ie.wit.cryptotracker.models.CryptoJSONStore
-import ie.wit.cryptotracker.models.CryptoMemStore
 import ie.wit.cryptotracker.models.CryptoStore
 import timber.log.Timber
 import timber.log.Timber.i
-import ie.wit.cryptotracker.activities.CryptoActivity
 
 class MainApp : Application() {
 
@@ -21,6 +20,8 @@ class MainApp : Application() {
         i("CryptoTracker started")
 
     }
+
+
 
 
 }

@@ -13,9 +13,8 @@
         android:layout_height="wrap_content"
         android:background="#081C3B"
         android:fitsSystemWindows="false"
-        android:layout_marginTop="50dp"
-        app:elevation="0dp"
-        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        android:layout_marginTop="20dp"
+        app:elevation="0dp">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
@@ -68,7 +67,6 @@
                 android:textColor="#BFC8D6"
                 android:paddingStart="40dp"/>
 
-
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 
@@ -79,8 +77,8 @@
         android:layout_height="match_parent"
         android:background="#081C3B"
         android:scrollbars="vertical"
-        android:layout_marginTop="150dp"
-        android:paddingBottom="50dp"
+        android:layout_marginTop="180dp"
+        android:paddingBottom="10dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

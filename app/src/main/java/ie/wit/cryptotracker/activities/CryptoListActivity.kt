@@ -34,22 +34,10 @@ class CryptoListActivity : AppCompatActivity(), CryptoListener {
         binding.toolbar.title = title
         setSupportActionBar(binding.toolbar)
         app = application as MainApp
-
-        var totalsNF = NumberFormat.getInstance().format(getTotalBalance())
-
-        var totalBalance = "€$totalsNF"
-
-        binding.totalAmount.setText(totalBalance)
-
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerView.layoutManager = layoutManager
-
         loadCryptos()
-
         registerRefreshCallback()
-
-
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -76,7 +64,9 @@ class CryptoListActivity : AppCompatActivity(), CryptoListener {
     private fun registerRefreshCallback() {
         refreshIntentLauncher =
             registerForActivityResult(ActivityResultContracts.StartActivityForResult())
-            { loadCryptos() }
+            { loadCryptos()
+
+            }
     }
 
     private fun loadCryptos() {
@@ -86,6 +76,9 @@ class CryptoListActivity : AppCompatActivity(), CryptoListener {
     fun showCryptos (cryptos: List<CryptoModel>) {
         binding.recyclerView.adapter = CryptoAdapter(cryptos, this)
         binding.recyclerView.adapter?.notifyDataSetChanged()
+        var totalsNF = NumberFormat.getInstance().format(getTotalBalance())
+        var totalBalance = "€$totalsNF"
+        binding.totalAmount.setText(totalBalance)
     }
 
     private fun getTotalBalance(): Float {

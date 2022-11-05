@@ -20,8 +20,7 @@ tools:context="ie.wit.cryptotracker.activities.CryptoActivity">
         android:background="#081C3B"
         android:fitsSystemWindows="true"
         app:elevation="0dip"
-        android:textColor="#BFC8D6"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        android:textColor="#BFC8D6">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbarAdd"

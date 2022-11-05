@@ -41,6 +41,7 @@ class CryptoAdapter constructor(
             binding.amount.text = "Amount: "+ crypto.amount
             binding.price.text = "Price: €" + crypto.price
             binding.total.text = "Total: €" + crypto.total
+
             Picasso.get().load(crypto.image).resize(600,600).into(binding.imageIcon)
             binding.root.setOnClickListener { listener.onCryptoClick(crypto) }
         }
